@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 
 const Navbar = () => {
@@ -50,7 +50,7 @@ const Navbar = () => {
             src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
         </div>
       </div>
-    <a className="btn">LogIn</a>
+    <a className="btn"><Link to='/login'>LogIn</Link></a>
   
 </div>
 </div>

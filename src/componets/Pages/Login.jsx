@@ -1,31 +1,25 @@
-const Login = () => {
-const handleLogin=e=>{
-    e.preventDefault();
-    const email=e.target.email.value;
-    const password=e.target.password.value;
-    console.log(email,password);
-}
+import { Link } from "react-router-dom";
+import Navbar from "./Navbar";
 
+const Login = () => {
   return (
-    <div className="hero bg-base-200 min-h-screen">
-      <div className="hero-content flex-col lg:flex-row-reverse">
-        <div className="text-center lg:text-left">
-          <h1 className="text-5xl font-bold">Login now!</h1>
-          <p className="py-6">
-            Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-            excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
-            a id nisi.
-          </p>
-        </div>
-        <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
-          <form onSubmit={handleLogin} className="card-body">
-            <div className="form-control">
+    <div className="mt-10">
+      <Navbar></Navbar>
+
+      <div className="hero-content flex-col lg:flex-row-reverse my-10 p-16">
+        <div className="bg-slate-50 w-[752px] h-[700px] drop-shadow-md  flex justify-center  items-center">
+          <div className=" w-[606px] h-[548px] ">
+          <div className="border-b-2">
+            <h1 className="text-4xl text-center font-semibold mb-4">Login  your account</h1>
+            </div>
+          <form className=" w-[559px] h-[339px] m-6">
+            
+            <div className="form-control w-full">
               <label className="label">
                 <span className="label-text">Email</span>
               </label>
               <input
                 type="email"
-                name="email"
                 placeholder="email"
                 className="input input-bordered"
                 required
@@ -37,7 +31,6 @@ const handleLogin=e=>{
               </label>
               <input
                 type="password"
-                name="password"
                 placeholder="password"
                 className="input input-bordered"
                 required
@@ -52,6 +45,8 @@ const handleLogin=e=>{
               <button className="btn btn-primary">Login</button>
             </div>
           </form>
+          <p className="text-sm text-center">Don't have account?<span className="text-red-700"><Link to='/register'>Register</Link></span></p>
+          </div>
         </div>
       </div>
     </div>
