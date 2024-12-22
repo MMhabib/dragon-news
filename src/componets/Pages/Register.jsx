@@ -1,12 +1,17 @@
+import { Link } from "react-router-dom";
+import Navbar from "./Navbar";
 
 
 const Register = () => {
 
     const handleRegister=(e)=>{
         e.preventDefault();
-        const email=e.target.email.value;
         const form=new FormData(e.currentTarget);
-        console.log(form.get('email'));
+        const email=form.get('email');
+        const name=form.get('name');
+        const url=form.get('photo-url');
+        const password=form.get('password');
+console.log(email,name,password,url);
           }
           return (
             <div className="mt-10">
@@ -16,10 +21,21 @@ const Register = () => {
                 <div className="bg-slate-50 w-[752px] h-[700px] drop-shadow-md  flex justify-center  items-center">
                   <div className=" w-[606px] h-[548px] ">
                   <div className="border-b-2">
-                    <h1 className="text-4xl text-center font-semibold mb-4">Login  your account</h1>
+                    <h1 className="text-4xl text-center font-semibold mb-4">Register account</h1>
                     </div>
                   <form onSubmit={handleRegister} className=" w-[559px] h-[339px] m-6">
-                    
+                  <div className="form-control w-full">
+                      <label className="label">
+                        <span className="label-text">Name</span>
+                      </label>
+                      <input
+                        type="text"
+                        name="name"
+                        placeholder="Your name"
+                        className="input input-bordered"
+                        required
+                      />
+                    </div>
                     <div className="form-control w-full">
                       <label className="label">
                         <span className="label-text">Email</span>
@@ -28,6 +44,19 @@ const Register = () => {
                         type="email"
                         name="email"
                         placeholder="email"
+                        className="input input-bordered"
+                        required
+                      />
+                    </div>
+                   
+                    <div className="form-control w-full">
+                      <label className="label">
+                        <span className="label-text">Photo Url</span>
+                      </label>
+                      <input
+                        type="text"
+                        name="photo-url"
+                        placeholder="Photo Url"
                         className="input input-bordered"
                         required
                       />
@@ -49,10 +78,10 @@ const Register = () => {
                       </label>
                     </div>
                     <div className="form-control mt-6">
-                      <button className="btn btn-primary">Login</button>
+                      <button className="btn btn-primary">Register</button>
                     </div>
                   </form>
-                  <p className="text-sm text-center">Don't have account?<Link className="text-red-700" to='/register'>Register</Link></p>
+                  <p className="text-sm text-center">Already have account?<Link className="text-red-700" to='/login'>Log In</Link></p>
                   </div>
                 </div>
               </div>
