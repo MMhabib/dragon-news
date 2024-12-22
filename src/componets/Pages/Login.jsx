@@ -2,6 +2,13 @@ import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
 
 const Login = () => {
+
+  const handleLogin=(e)=>{
+e.preventDefault();
+const email=e.target.email.value;
+const form=new FormData(e.currentTarget);
+console.log(form.get('email'));
+  }
   return (
     <div className="mt-10">
       <Navbar></Navbar>
@@ -12,7 +19,7 @@ const Login = () => {
           <div className="border-b-2">
             <h1 className="text-4xl text-center font-semibold mb-4">Login  your account</h1>
             </div>
-          <form className=" w-[559px] h-[339px] m-6">
+          <form onSubmit={handleLogin} className=" w-[559px] h-[339px] m-6">
             
             <div className="form-control w-full">
               <label className="label">
@@ -20,6 +27,7 @@ const Login = () => {
               </label>
               <input
                 type="email"
+                name="email"
                 placeholder="email"
                 className="input input-bordered"
                 required
@@ -45,7 +53,7 @@ const Login = () => {
               <button className="btn btn-primary">Login</button>
             </div>
           </form>
-          <p className="text-sm text-center">Don't have account?<span className="text-red-700"><Link to='/register'>Register</Link></span></p>
+          <p className="text-sm text-center">Don't have account?<Link className="text-red-700" to='/register'>Register</Link></p>
           </div>
         </div>
       </div>
