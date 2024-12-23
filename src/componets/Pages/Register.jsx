@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
 import { useContext } from "react";
 import { AuthContext } from "../../providers/Authprovider";
+import toast, { Toaster } from "react-hot-toast";
 
 const Register = () => {
   const { createUser } = useContext(AuthContext);
@@ -14,8 +15,8 @@ const Register = () => {
     const password = form.get("password");
 
     createUser(email, password)
-      .then((result) => {
-        console.log(result.user);
+      .then(() => {
+        toast.success('user created sureecsfully')
       })
       .catch((error) => {
         console.error(error);
@@ -23,7 +24,9 @@ const Register = () => {
   };
 
   return (
+    
     <div className="mt-10">
+        <Toaster></Toaster>
       <Navbar></Navbar>
 
       <div className="hero-content flex-col lg:flex-row-reverse my-10 p-16">
