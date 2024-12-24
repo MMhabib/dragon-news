@@ -33,7 +33,7 @@ useEffect(()=>{
             <LeftSideNav></LeftSideNav>
         </div>
         <div className="md:col-span-2">
-            <h1 className="text-5xl">news comingg sooon</h1>
+            <h1 className="text-xl font-semibold">news comingg sooon</h1>
             {
               newses.map(news=><News key={news._id} news={news}></News>)
         
