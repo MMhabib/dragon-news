@@ -5,6 +5,7 @@ import Career from "../componets/Pages/Career";
 import About from "../componets/Pages/About";
 import Login from "../componets/Pages/Login";
 import Register from "../componets/Pages/Register";
+import NewsDetails from "../componets/Pages/NewsDetails";
 
 
 
@@ -16,6 +17,11 @@ const routes=createBrowserRouter([
             {
                 path:'/',
                 element:<Home></Home>
+    
+            },
+            {
+                path:'/news/:id',
+                element:<NewsDetails></NewsDetails>
     
             },
             {
