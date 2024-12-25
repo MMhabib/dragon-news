@@ -6,6 +6,7 @@ import About from "../componets/Pages/About";
 import Login from "../componets/Pages/Login";
 import Register from "../componets/Pages/Register";
 import NewsDetails from "../componets/Pages/NewsDetails";
+import PrivateRoute from "./PrivateRoute";
 
 
 
@@ -21,7 +22,7 @@ const routes=createBrowserRouter([
             },
             {
                 path:'/news/:id',
-                element:<NewsDetails></NewsDetails>
+                element:<PrivateRoute><NewsDetails></NewsDetails></PrivateRoute>
     
             },
             {
