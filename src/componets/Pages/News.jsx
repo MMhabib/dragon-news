@@ -1,7 +1,10 @@
+
+import { Link } from 'react-router-dom';
 const News = ({ news }) => {
-  const { author } = news;
+
+  const { author ,total_view,title,details ,image_url,rating,_id} = news;
   return (
-    <div className="card border-2  bg-base-100 w-full rounded-md  mt-8 ">
+    <div className="card border-2  bg-base-100 w-full rounded-md  mt-6 ">
       <div className="flex bg-[#F3F3F3] rounded-t-md h-20 p-4">
         <img className="h-10 rounded-badge mr-2" src={author.img} alt="" />
         <div>
@@ -12,16 +15,18 @@ const News = ({ news }) => {
       
       <figure className="p-4">
         <img
-          src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-          alt="Shoes"
+          src={image_url}
+          
         />
       </figure>
       <div className="card-body">
-        <h2 className="card-title">
-          Shoes!
-          <div className="badge badge-secondary">NEW</div>
-        </h2>
-        <p>If a dog chews shoes whose </p>
+        {
+        details.length>200?
+        <p>{details.slice(0,200)}<Link className='text-red-700 ' to={`/news/${_id}`}>Read more</Link> </p>
+        :<p>{details}</p>
+    
+        }
+        
         <div className="card-actions justify-end">
           <div className="badge badge-outline">Fashion</div>
           <div className="badge badge-outline">Products</div>
