@@ -1,11 +1,12 @@
 import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../providers/Authprovider";
 import toast, { Toaster } from "react-hot-toast";
 
 const Register = () => {
   const { createUser } = useContext(AuthContext);
+  const[registererror,setRegistererror]=useState('')
   const handleRegister = (e) => {
     e.preventDefault();
     const form = new FormData(e.currentTarget);
@@ -13,14 +14,18 @@ const Register = () => {
     const name = form.get("name");
     const url = form.get("photo-url");
     const password = form.get("password");
-
+setRegistererror('')
     createUser(email, password)
       .then(() => {
         toast.success('user created sureecsfully')
       })
-      .catch((error) => {
-        console.error(error);
-      });
+      .catch((error) => { 
+        if (error.code === 'auth/email-already-in-use') {
+        setRegistererror('This email is already registered.');
+      } else if (error.code === 'auth/weak-password') {
+        setRegistererror('The password is too weak.');
+      }});
+    
   };
 
   return (
@@ -107,6 +112,7 @@ const Register = () => {
             </p>
           </div>
         </div>
+        <p>{registererror}</p>
       </div>
     </div>
   );
