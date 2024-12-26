@@ -1,10 +1,12 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Navbar from "./Navbar";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../providers/Authprovider";
+import GoogleSIgn from "../../Shared/Lefsidenav/RightSideNav/GoogleSIgn";
 
 const Login = () => {
   const { signIn } = useContext(AuthContext);
+  const [signinError,setSigninError]=useState('')
 const location=useLocation()
 const navigate=useNavigate()
   const handleLogin = (e) => {
@@ -13,6 +15,7 @@ const navigate=useNavigate()
     const form = new FormData(e.currentTarget);
     const email = form.get("email");
     const password = form.get("password");
+    setSigninError('')
     console.log(email, password);
     signIn(email, password)
       .then((result) => {
@@ -20,8 +23,11 @@ const navigate=useNavigate()
 navigate(location?.state ? location.state :'/');
       })
       .catch((error) => {
-        console.error(error);
-      });
+        if (error.code === 'auth/user-not-found') {
+          setSigninError('No account found with this email.');
+        } else if (error.code === 'auth/wrong-password') {
+          setSigninError('Incorrect password. Please try again.');
+      }});
   };
   return (
     <div className="mt-10">
@@ -75,7 +81,9 @@ navigate(location?.state ? location.state :'/');
                 Register
               </Link>
             </p>
+            <GoogleSIgn></GoogleSIgn>
           </div>
+          <p>{signinError}</p>
         </div>
       </div>
     </div>
