@@ -1,15 +1,29 @@
-import React from "react";
+import React, { useContext } from "react";
 import { FaFacebook, FaGit, FaGithub, FaGoogle, FaInstagram, FaTwitter } from "react-icons/fa";
 import swim from '../../../assets/Images-logos/swimming.png'
 import class1 from '../../../assets/Images-logos/class.png'
 import playground from '../../../assets/Images-logos/playground.png'
+import { AuthContext } from "../../../providers/Authprovider";
+import { useNavigate } from "react-router-dom";
 const RightSideNav = () => {
+const {signInWithGoogle}=useContext(AuthContext);
+const navigate=useNavigate()
+const handleGoogleSignin=()=>{
+  signInWithGoogle()
+  .then((result) => {
+    console.log(result.user);
+    navigate(location?.state || '/'); // Navigate after login
+  })
+  .catch();
+};
+
+
   return (
     <div>
       {/* login with  */}
       <div className="space-y-2">
         <h1 className="text-xl font-extrabold mb-4">Login with</h1>
-        <button className="btn w-full">
+        <button onClick={handleGoogleSignin} className="btn w-full">
           <FaGoogle></FaGoogle>
           Google
         </button>
