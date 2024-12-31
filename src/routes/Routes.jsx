@@ -21,8 +21,9 @@ const routes=createBrowserRouter([
     
             },
             {
-                path:'/news/:id',
-                element:<PrivateRoute><NewsDetails></NewsDetails></PrivateRoute>
+                path:'/news/:category_id',
+                element:<PrivateRoute><NewsDetails></NewsDetails></PrivateRoute>,
+                loader: ()=>fetch('../news.json')
     
             },
             {

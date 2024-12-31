@@ -44,7 +44,7 @@ const handleGoogleSignin=()=>{
     <FaInstagram></FaInstagram>Instagram</a>
         </div>
       </div>
-      <div className="mt-6 p-4 bg-[#F3F3F3] space-y-3">
+      <div className="mt-6 p-4 bg-[#F3F3F3] space-y-3 flex flex-col items-center justify-center sm:items-start sm:justify-start">
         <h1 className="text-xl font-semibold">Q-zone</h1>
         <img src={swim} alt="" /><img src={class1} alt="" /><img src={playground} alt="" />
       </div>

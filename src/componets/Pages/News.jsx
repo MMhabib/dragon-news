@@ -2,7 +2,9 @@
 import { Link } from 'react-router-dom';
 const News = ({ news }) => {
 
-  const { author ,total_view,title,details ,image_url,rating,_id} = news;
+  const { author ,total_view,title,details ,image_url,rating,_id,category_id
+    
+  } = news;
   return (
     <div className="card border-2  bg-base-100 w-full rounded-md  mt-6 ">
       <div className="flex bg-[#F3F3F3] rounded-t-md h-20 p-4">
@@ -22,7 +24,7 @@ const News = ({ news }) => {
       <div className="card-body">
         {
         details.length>200?
-        <p>{details.slice(0,200)}<Link className='text-red-700 ml-2 ' to={`/news/${_id}`}>Read more</Link> </p>
+        <p>{details.slice(0,200)}<Link  className='text-red-700 ml-2 ' to={`/news/${category_id} ` }>Read more</Link> </p>
         :<p>{details}</p>
     
         }
