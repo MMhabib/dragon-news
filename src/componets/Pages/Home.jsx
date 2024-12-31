@@ -8,6 +8,14 @@ import News from "./News";
 const Home = () => {
 
 const [newses,setNewses]=useState([]);
+const [loadnews,setLoadnews]=useState(5)
+const handleNewsload=()=>{
+  setLoadnews(newses.length)
+}
+const handleNewsshowless=()=>{
+  setLoadnews(5)
+}
+
 useEffect(()=>{
   fetch('news.json')
   .then(res=>res.json())
@@ -35,8 +43,14 @@ useEffect(()=>{
         <div className="md:col-span-2">
             <h1 className="text-xl font-semibold">news comingg sooon</h1>
             {
-              newses.map(news=><News key={news._id} news={news}></News>)
+              newses.slice(0,loadnews).map(news=><News key={news._id} news={news}></News>)
         
+            }
+            {
+              loadnews<newses.length?
+              <button onClick={handleNewsload} className="btn">loadmore</button>
+              :
+              <button onClick={handleNewsshowless} className="btn">show less</button>
             }
         </div>
         <div>
