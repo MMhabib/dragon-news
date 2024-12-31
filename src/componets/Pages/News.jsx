@@ -24,7 +24,7 @@ const News = ({ news }) => {
       <div className="card-body">
         {
         details.length>200?
-        <p>{details.slice(0,200)}<Link  className='text-red-700 ml-2 ' to={`/news/${category_id} ` }>Read more</Link> </p>
+        <p>{details.slice(0,200)}<Link  className='text-red-700 ml-2 ' to={`/news/${_id}` }>Read more</Link> </p>
         :<p>{details}</p>
     
         }
